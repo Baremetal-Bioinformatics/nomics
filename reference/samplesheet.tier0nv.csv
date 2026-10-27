@@ -1,0 +1,3 @@
+patient,sex,status,sample,lane,fastq_1,fastq_2
+HG002,XY,0,HG002_WES,L1,${HOME}/omics/data/tier0nv/tier0nv_L1_1.fastq.gz,${HOME}/omics/data/tier0nv/tier0nv_L1_2.fastq.gz
+HG002,XY,0,HG002_WES,L2,${HOME}/omics/data/tier0nv/tier0nv_L2_1.fastq.gz,${HOME}/omics/data/tier0nv/tier0nv_L2_2.fastq.gz

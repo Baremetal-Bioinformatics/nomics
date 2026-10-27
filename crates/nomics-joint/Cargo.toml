@@ -1,0 +1,15 @@
+[package]
+name = "nomics-joint"
+description = "GATK 4.6.2.0 GenotypeGVCFs (single-sample, sarek --joint_germline) semantics"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+nomics-io.workspace = true
+nomics-hc.workspace = true
+
+[lints]
+workspace = true

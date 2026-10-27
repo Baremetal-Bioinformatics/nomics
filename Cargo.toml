@@ -1,0 +1,40 @@
+[workspace]
+resolver = "3"
+members = ["crates/*"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.98"
+license = "GPL-3.0-only"
+publish = false
+
+[workspace.dependencies]
+nomics-mem = { path = "crates/nomics-mem" }
+nomics-gpu = { path = "crates/nomics-gpu" }
+nomics-simd = { path = "crates/nomics-simd" }
+nomics-io = { path = "crates/nomics-io" }
+nomics-prep = { path = "crates/nomics-prep" }
+nomics-align = { path = "crates/nomics-align" }
+nomics-markdup = { path = "crates/nomics-markdup" }
+nomics-bqsr = { path = "crates/nomics-bqsr" }
+nomics-hc = { path = "crates/nomics-hc" }
+nomics-gate = { path = "crates/nomics-gate" }
+nomics-quant = { path = "crates/nomics-quant" }
+nomics-count = { path = "crates/nomics-count" }
+nomics-solo = { path = "crates/nomics-solo" }
+nomics-joint = { path = "crates/nomics-joint" }
+clap = { version = "4.5", features = ["derive"] }
+libc = "0.2"
+rayon = "1.12"
+
+[workspace.lints.rust]
+unsafe_code = "deny"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+debug = "line-tables-only"
+
+[profile.bench]
+inherits = "release"

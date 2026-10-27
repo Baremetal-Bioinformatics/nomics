@@ -1,0 +1,36 @@
+[package]
+name = "nomics"
+description = "Single-process FASTQ-to-VCF germline pipeline for GB10 unified memory"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[features]
+cuda = ["nomics-gpu/cuda", "nomics-align/cuda", "nomics-markdup/cuda", "nomics-hc/cuda"]
+# Apple Silicon: Metal backend in nomics-gpu (Metal sprint; smoke entry points so far).
+metal = ["nomics-gpu/metal", "nomics-align/metal"]
+# mimalloc as the global allocator (S-10: tier1 -5.7%, wgs30s HC -10%; +4-5 GB peak).
+default = ["mimalloc"]
+mimalloc = ["dep:mimalloc"]
+
+[dependencies]
+clap.workspace = true
+nomics-mem.workspace = true
+nomics-gpu.workspace = true
+nomics-io.workspace = true
+nomics-prep.workspace = true
+nomics-align.workspace = true
+nomics-markdup.workspace = true
+nomics-bqsr.workspace = true
+nomics-hc.workspace = true
+nomics-gate.workspace = true
+nomics-quant.workspace = true
+nomics-count.workspace = true
+nomics-solo.workspace = true
+nomics-joint.workspace = true
+mimalloc = { version = "0.1", default-features = false, optional = true }
+
+[lints]
+workspace = true

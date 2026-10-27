@@ -1,0 +1,41 @@
+# Build and test on the two CPU architectures nomics must agree on: x86-64 (portable
+# kernels) and arm64 (NEON kernels). GPU paths (CUDA, Metal) are compiled where the
+# runner can, but the gates themselves need a GPU and the sarek goldens; see REPRODUCE.md.
+# Tests that need large fixtures skip unless NOMICS_FIXTURES is set.
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  test:
+    name: test (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, ubuntu-24.04-arm, macos-15]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Toolchain (rust-toolchain.toml)
+        run: rustup show active-toolchain || rustup toolchain install
+      - uses: Swatinem/rust-cache@v2
+      - name: Build
+        run: cargo build --workspace --all-targets --locked
+      - name: Test
+        run: cargo test --workspace --locked
+      - name: Build with Metal
+        if: runner.os == 'macOS'
+        run: cargo build -p nomics --features metal --locked

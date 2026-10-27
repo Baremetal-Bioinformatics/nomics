@@ -1,0 +1,19 @@
+[package]
+name = "nomics-quant"
+description = "Deterministic alignment quantification matching Salmon 2.7.0"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+nomics-io.workspace = true
+nomics-mem.workspace = true
+rayon.workspace = true
+statrs = { version = "=0.19.0", default-features = false }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[lints]
+workspace = true

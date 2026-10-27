@@ -1,0 +1,19 @@
+[package]
+name = "nomics-markdup"
+description = "Duplicate marking matching GATK MarkDuplicates 4.6.2.0"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[features]
+cuda = ["nomics-gpu/cuda"]
+
+[dependencies]
+rayon.workspace = true
+nomics-io.workspace = true
+nomics-gpu.workspace = true
+
+[lints]
+workspace = true
