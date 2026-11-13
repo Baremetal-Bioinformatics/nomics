@@ -1,0 +1,13 @@
+01:12:56.908 INFO  NativeLibraryLoader - Loading libgkl_pairhmm_omp.so from jar:file:/gatk/gatk-package-4.0.12.0-local.jar!/com/intel/gkl/native/libgkl_pairhmm_omp.so
+01:12:56.947 INFO  IntelPairHmm - Flush-to-zero (FTZ) is enabled when running PairHMM
+01:12:56.947 INFO  IntelPairHmm - Available threads: 32
+01:12:56.947 INFO  IntelPairHmm - Requested threads: 4
+01:12:56.947 INFO  PairHMM - Using the OpenMP multi-threaded AVX-accelerated native PairHMM implementation
+01:25:46.771 INFO  VectorLoglessPairHMM - Time spent in setup for JNI call : 0.129867287
+01:25:46.771 INFO  PairHMM - Total compute time in PairHMM computeLogLikelihoods() : 20.260032233
+---
+23:33:42.382 INFO  PairHMM - Using the non-hardware-accelerated Java LOGLESS_CACHING PairHMM implementation
+23:54:51.994 INFO  PairHMM - Total compute time in PairHMM computeLogLikelihoods() : 360.943626196
+---
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -Xmx3g -XX:-UsePerfData -jar /gatk/gatk-package-4.0.12.0-local.jar HaplotypeCaller -R ref/Homo_sapiens_assembly38.fasta -I /data/omics/data/hc4012/HG002_WGS30S.recal.bam -L iv/chr1.bed -O out/gkl-r1/chr1.g.vcf.gz -ERC GVCF
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -Xmx3g -XX:-UsePerfData -jar /gatk/gatk-package-4.0.12.0-local.jar HaplotypeCaller -R ref/Homo_sapiens_assembly38.fasta -I /data/omics/data/hc4012/HG002_WGS30S.recal.bam -L iv/chr1.bed -O out/java-r1/chr1.g.vcf.gz -ERC GVCF --pair-hmm-implementation LOGLESS_CACHING --smith-waterman JAVA --use-jdk-deflater --use-jdk-inflater

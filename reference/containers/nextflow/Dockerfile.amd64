@@ -1,0 +1,12 @@
+# Nextflow for linux/amd64: the pinned image, unchanged except for its Docker CLI.
+# nextflow/nextflow:26.04.6 ships Docker CLI 19.03.15 (API 1.40). Docker Engine 29
+# refuses clients below API 1.44, so on a current host every sarek task ends with
+# "client version 1.40 is too old" (found on Ubuntu 24.04 with Docker 29.1.3,
+# 2026-11-11). `nomics verify fetch` builds this instead, with the same static CLI
+# the arm64 image uses; a newer client still talks to older engines.
+# NXF_IMAGE is the descriptor's pinned Nextflow image.
+ARG NXF_IMAGE=docker.io/nextflow/nextflow:26.04.6
+# Pinned by digest: this binary is handed the Docker socket.
+FROM docker.io/library/docker:28.5.1-cli@sha256:9190b0613792e658a7783cf14b2d5ace5941bb68ede7276922ea36ee457d76ad AS dockercli
+FROM ${NXF_IMAGE}
+COPY --from=dockercli /usr/local/bin/docker /usr/local/bin/docker

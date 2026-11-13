@@ -1,0 +1,2 @@
+patient,sex,status,sample,lane,fastq_1,fastq_2
+HG002,XY,0,HG002_WGS30,L1,/data/omics/data/sra_wgs/fastq/SRR14724532_1.fastq.gz,/data/omics/data/sra_wgs/fastq/SRR14724532_2.fastq.gz

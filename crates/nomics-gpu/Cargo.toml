@@ -1,0 +1,19 @@
+[package]
+name = "nomics-gpu"
+description = "GPU kernels behind a C ABI: CUDA (`cuda`), Metal (`metal`), or a stub backend"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[features]
+cuda = []
+metal = []
+
+[dependencies]
+nomics-mem.workspace = true
+rayon.workspace = true
+
+[lints]
+workspace = true

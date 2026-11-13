@@ -1,0 +1,11 @@
+# Sample-matrix genomes (docs/strategy/sample-matrix.md). Read by scripts/goldens/genome_golden.sh.
+# id	patient	sample	sex	r1	r2	md5_r1	md5_r2
+# All three are Google's copies (brain-genomics-public), md5s from the bucket listing read 2026-11-06.
+# Depths are what fits the Spark's free disk with sarek's work tree (about 5.5x the FASTQ size at
+# peak, docs/strategy/sample-matrix.md "Genomes on the Spark").
+# G1: NovaSeq X, SRA-style names with the original name in the comment and repeated on the '+' line.
+# G2: female, PCR-free, NovaSeq 6000 native names (poly-G and optical duplicates on).
+# G3: PCR library (duplicate-heavy), NovaSeq 6000 native names.
+G1	HG002	HG002_WGS10X	XY	https://storage.googleapis.com/brain-genomics-public/research/sequencing/fastq/novaseqx/HG002.novaseqX.10x.R1.fastq.gz	https://storage.googleapis.com/brain-genomics-public/research/sequencing/fastq/novaseqx/HG002.novaseqX.10x.R2.fastq.gz	c1369eea32bceb4876dcd307e262e4fb	44c72edb94351370db83ae7071cef850
+G2	HG001	HG001_WGS	XX	https://storage.googleapis.com/brain-genomics-public/research/sequencing/fastq/novaseq/wgs_pcr_free/20x/HG001.novaseq.pcr-free.20x.R1.fastq.gz	https://storage.googleapis.com/brain-genomics-public/research/sequencing/fastq/novaseq/wgs_pcr_free/20x/HG001.novaseq.pcr-free.20x.R2.fastq.gz	aea0647f25a2aa86f5593aa303cbe728	32384c23dab61a296f6c1b86b4d43f00
+G3	HG003	HG003_WGS_PCR	XY	https://storage.googleapis.com/brain-genomics-public/research/sequencing/fastq/novaseq/wgs_pcr_plus/20x/HG003.novaseq.pcr-plus.20x.R1.fastq.gz	https://storage.googleapis.com/brain-genomics-public/research/sequencing/fastq/novaseq/wgs_pcr_plus/20x/HG003.novaseq.pcr-plus.20x.R2.fastq.gz	4ffc529a85ce200ea44556bfe87e541a	06a8a800119b48707d679d59f0379436

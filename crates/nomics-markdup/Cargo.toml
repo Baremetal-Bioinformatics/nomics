@@ -1,0 +1,22 @@
+[package]
+name = "nomics-markdup"
+description = "Duplicate marking matching GATK MarkDuplicates 4.6.2.0"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[features]
+cuda = ["nomics-gpu/cuda"]
+# Test-only fault for `nomics verify`'s negative gate: among duplicates with
+# equal scores, keep the last instead of the first. Never in a release build.
+fault-tiebreak = []
+
+[dependencies]
+rayon.workspace = true
+nomics-io.workspace = true
+nomics-gpu.workspace = true
+
+[lints]
+workspace = true

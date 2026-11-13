@@ -1,0 +1,353 @@
+CASE	1	1
+CHAIN	0	1	A	AC	1	true	true	1	1	true	false	false
+CHAIN	1	5	C	CGCC	1,1	true	true	3	3	false	false	false
+CHAIN	1	5	C	CTCC	1,1	false	false	3	3	false	false	false
+CHAIN	1	5	C	CACCC	1,1	false	false	3	3	false	false	false
+CHAIN	5	6	CC	CCGC	2	true	true	2	2	false	true	false
+CASE	1	2
+CHAIN	0	1	A	AC	1	true	true	1	1	true	false	false
+CHAIN	1	5	C	CGCC	1,1	true	true	4	4	false	false	false
+CHAIN	1	5	C	CTCC	2,2	false	false	4	4	false	false	false
+CHAIN	1	5	C	CACCC	1,1	false	false	4	4	false	false	false
+CHAIN	5	6	CC	CCGC	3	true	true	3	3	false	true	false
+CASE	1	5
+CHAIN	0	1	A	AC	1	true	true	1	1	true	false	false
+CHAIN	1	5	C	CGCC	1,1	true	true	7	7	false	false	false
+CHAIN	1	5	C	CTCC	5,5	false	false	7	7	false	false	false
+CHAIN	1	5	C	CACCC	1,1	false	false	7	7	false	false	false
+CHAIN	5	6	CC	CCGC	6	true	true	6	6	false	true	false
+CASE	1	20
+CHAIN	0	1	A	AC	1	true	true	1	1	true	false	false
+CHAIN	1	5	C	CGCC	1,1	true	true	22	22	false	false	false
+CHAIN	1	5	C	CTCC	20,20	false	false	22	22	false	false	false
+CHAIN	1	5	C	CACCC	1,1	false	false	22	22	false	false	true
+CHAIN	5	6	CC	CCGC	21	true	true	21	21	false	true	false
+CASE	2	1
+CHAIN	0	1	A	AC	2	true	true	2	2	true	false	false
+CHAIN	1	5	C	CGCC	2,2	true	true	4	4	false	false	false
+CHAIN	1	5	C	CTCC	1,1	false	false	4	4	false	false	false
+CHAIN	1	5	C	CACCC	1,1	false	false	4	4	false	false	false
+CHAIN	5	6	CC	CCGC	3	true	true	3	3	false	true	false
+CASE	2	2
+CHAIN	0	1	A	AC	2	true	true	2	2	true	false	false
+CHAIN	1	5	C	CGCC	2,2	true	true	5	5	false	false	false
+CHAIN	1	5	C	CTCC	2,2	false	false	5	5	false	false	false
+CHAIN	1	5	C	CACCC	1,1	false	false	5	5	false	false	false
+CHAIN	5	6	CC	CCGC	4	true	true	4	4	false	true	false
+CASE	2	5
+CHAIN	0	1	A	AC	2	true	true	2	2	true	false	false
+CHAIN	1	5	C	CGCC	2,2	true	true	8	8	false	false	false
+CHAIN	1	5	C	CTCC	5,5	false	false	8	8	false	false	false
+CHAIN	1	5	C	CACCC	1,1	false	false	8	8	false	false	false
+CHAIN	5	6	CC	CCGC	7	true	true	7	7	false	true	false
+CASE	2	20
+CHAIN	0	1	A	AC	2	true	true	2	2	true	false	false
+CHAIN	1	5	C	CGCC	2,2	true	true	23	23	false	false	false
+CHAIN	1	5	C	CTCC	20,20	false	false	23	23	false	false	false
+CHAIN	1	5	C	CACCC	1,1	false	false	23	23	false	false	true
+CHAIN	5	6	CC	CCGC	22	true	true	22	22	false	true	false
+CASE	3	1
+CHAIN	0	1	A	AC	3	true	true	3	3	true	false	false
+CHAIN	1	5	C	CGCC	3,3	true	true	5	5	false	false	false
+CHAIN	1	5	C	CTCC	1,1	false	false	5	5	false	false	false
+CHAIN	1	5	C	CACCC	1,1	false	false	5	5	false	false	false
+CHAIN	5	6	CC	CCGC	4	true	true	4	4	false	true	false
+CASE	3	2
+CHAIN	0	1	A	AC	3	true	true	3	3	true	false	false
+CHAIN	1	5	C	CGCC	3,3	true	true	6	6	false	false	false
+CHAIN	1	5	C	CTCC	2,2	false	false	6	6	false	false	false
+CHAIN	1	5	C	CACCC	1,1	false	false	6	6	false	false	false
+CHAIN	5	6	CC	CCGC	5	true	true	5	5	false	true	false
+CASE	3	5
+CHAIN	0	1	A	AC	3	true	true	3	3	true	false	false
+CHAIN	1	5	C	CGCC	3,3	true	true	9	9	false	false	false
+CHAIN	1	5	C	CTCC	5,5	false	false	9	9	false	false	false
+CHAIN	1	5	C	CACCC	1,1	false	false	9	9	false	false	false
+CHAIN	5	6	CC	CCGC	8	true	true	8	8	false	true	false
+CASE	3	20
+CHAIN	0	1	A	AC	3	true	true	3	3	true	false	false
+CHAIN	1	5	C	CGCC	3,3	true	true	24	24	false	false	false
+CHAIN	1	5	C	CTCC	20,20	false	false	24	24	false	false	false
+CHAIN	1	5	C	CACCC	1,1	false	false	24	24	false	false	true
+CHAIN	5	6	CC	CCGC	23	true	true	23	23	false	true	false
+CASE	10	1
+CHAIN	0	1	A	AC	10	true	true	10	10	true	false	false
+CHAIN	1	5	C	CGCC	10,10	true	true	12	12	false	false	false
+CHAIN	1	5	C	CTCC	1,1	false	false	12	12	false	false	true
+CHAIN	1	5	C	CACCC	1,1	false	false	12	12	false	false	true
+CHAIN	5	6	CC	CCGC	11	true	true	11	11	false	true	false
+CASE	10	2
+CHAIN	0	1	A	AC	10	true	true	10	10	true	false	false
+CHAIN	1	5	C	CGCC	10,10	true	true	13	13	false	false	false
+CHAIN	1	5	C	CTCC	2,2	false	false	13	13	false	false	true
+CHAIN	1	5	C	CACCC	1,1	false	false	13	13	false	false	true
+CHAIN	5	6	CC	CCGC	12	true	true	12	12	false	true	false
+CASE	10	5
+CHAIN	0	1	A	AC	10	true	true	10	10	true	false	false
+CHAIN	1	5	C	CGCC	10,10	true	true	16	16	false	false	false
+CHAIN	1	5	C	CTCC	5,5	false	false	16	16	false	false	false
+CHAIN	1	5	C	CACCC	1,1	false	false	16	16	false	false	true
+CHAIN	5	6	CC	CCGC	15	true	true	15	15	false	true	false
+CASE	10	20
+CHAIN	0	1	A	AC	10	true	true	10	10	true	false	false
+CHAIN	1	5	C	CGCC	10,10	true	true	31	31	false	false	false
+CHAIN	1	5	C	CTCC	20,20	false	false	31	31	false	false	false
+CHAIN	1	5	C	CACCC	1,1	false	false	31	31	false	false	true
+CHAIN	5	6	CC	CCGC	30	true	true	30	30	false	true	false
+CASE	100	1
+CHAIN	0	1	A	AC	100	true	true	100	100	true	false	false
+CHAIN	1	5	C	CGCC	100,100	true	true	102	102	false	false	false
+CHAIN	1	5	C	CTCC	1,1	false	false	102	102	false	false	true
+CHAIN	1	5	C	CACCC	1,1	false	false	102	102	false	false	true
+CHAIN	5	6	CC	CCGC	101	true	true	101	101	false	true	false
+CASE	100	2
+CHAIN	0	1	A	AC	100	true	true	100	100	true	false	false
+CHAIN	1	5	C	CGCC	100,100	true	true	103	103	false	false	false
+CHAIN	1	5	C	CTCC	2,2	false	false	103	103	false	false	true
+CHAIN	1	5	C	CACCC	1,1	false	false	103	103	false	false	true
+CHAIN	5	6	CC	CCGC	102	true	true	102	102	false	true	false
+CASE	100	5
+CHAIN	0	1	A	AC	100	true	true	100	100	true	false	false
+CHAIN	1	5	C	CGCC	100,100	true	true	106	106	false	false	false
+CHAIN	1	5	C	CTCC	5,5	false	false	106	106	false	false	false
+CHAIN	1	5	C	CACCC	1,1	false	false	106	106	false	false	true
+CHAIN	5	6	CC	CCGC	105	true	true	105	105	false	true	false
+CASE	100	20
+CHAIN	0	1	A	AC	100	true	true	100	100	true	false	false
+CHAIN	1	5	C	CGCC	100,100	true	true	121	121	false	false	false
+CHAIN	1	5	C	CTCC	20,20	false	false	121	121	false	false	false
+CHAIN	1	5	C	CACCC	1,1	false	false	121	121	false	false	true
+CHAIN	5	6	CC	CCGC	120	true	true	120	120	false	true	false
+CASE	1000	1
+CHAIN	0	1	A	AC	1000	true	true	1000	1000	true	false	false
+CHAIN	1	5	C	CGCC	1000,1000	true	true	1002	1002	false	false	false
+CHAIN	1	5	C	CTCC	1,1	false	false	1002	1002	false	false	true
+CHAIN	1	5	C	CACCC	1,1	false	false	1002	1002	false	false	true
+CHAIN	5	6	CC	CCGC	1001	true	true	1001	1001	false	true	false
+CASE	1000	2
+CHAIN	0	1	A	AC	1000	true	true	1000	1000	true	false	false
+CHAIN	1	5	C	CGCC	1000,1000	true	true	1003	1003	false	false	false
+CHAIN	1	5	C	CTCC	2,2	false	false	1003	1003	false	false	true
+CHAIN	1	5	C	CACCC	1,1	false	false	1003	1003	false	false	true
+CHAIN	5	6	CC	CCGC	1002	true	true	1002	1002	false	true	false
+CASE	1000	5
+CHAIN	0	1	A	AC	1000	true	true	1000	1000	true	false	false
+CHAIN	1	5	C	CGCC	1000,1000	true	true	1006	1006	false	false	false
+CHAIN	1	5	C	CTCC	5,5	false	false	1006	1006	false	false	true
+CHAIN	1	5	C	CACCC	1,1	false	false	1006	1006	false	false	true
+CHAIN	5	6	CC	CCGC	1005	true	true	1005	1005	false	true	false
+CASE	1000	20
+CHAIN	0	1	A	AC	1000	true	true	1000	1000	true	false	false
+CHAIN	1	5	C	CGCC	1000,1000	true	true	1021	1021	false	false	false
+CHAIN	1	5	C	CTCC	20,20	false	false	1021	1021	false	false	false
+CHAIN	1	5	C	CACCC	1,1	false	false	1021	1021	false	false	true
+CHAIN	5	6	CC	CCGC	1020	true	true	1020	1020	false	true	false
+CASE	cap
+CHAIN	0	1	A	AC	1000000	true	true	1000000	1000000	true	false	false
+CHAIN	1	2	C	CA000C000G	1000,100000,1000	true	true	110000	110000	false	false	false
+CHAIN	1	2	C	CA001C001G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA002C002G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA003C003G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA004C004G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA005C005G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA006C006G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA007C007G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA008C008G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA009C009G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA010C010G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA011C011G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA012C012G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA013C013G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA014C014G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA015C015G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA016C016G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA017C017G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA018C018G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA019C019G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA020C020G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA021C021G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA022C022G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA023C023G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA024C024G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA025C025G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA026C026G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA027C027G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA028C028G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA029C029G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA030C030G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA031C031G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA032C032G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA033C033G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA034C034G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA035C035G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA036C036G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA037C037G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA038C038G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA039C039G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA040C040G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA041C041G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA042C042G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA043C043G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA044C044G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA045C045G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA046C046G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA047C047G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA048C048G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA049C049G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA050C050G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA051C051G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA052C052G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA053C053G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA054C054G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA055C055G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA056C056G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA057C057G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA058C058G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA059C059G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA060C060G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA061C061G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA062C062G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA063C063G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA064C064G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA065C065G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA066C066G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA067C067G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA068C068G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA069C069G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA070C070G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA071C071G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA072C072G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA073C073G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA074C074G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA075C075G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA076C076G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA077C077G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA078C078G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA079C079G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA080C080G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA081C081G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA082C082G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA083C083G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA084C084G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA085C085G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA086C086G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA087C087G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA088C088G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA089C089G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA090C090G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA091C091G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA092C092G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA093C093G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA094C094G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA095C095G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA096C096G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA097C097G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA098C098G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA099C099G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA100C100G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA101C101G	1000,100000,1000	false	false	110000	110000	false	false	false
+CHAIN	1	2	C	CA102C102G	1000,100000,1000	false	false	110000	110000	false	false	true
+CHAIN	1	2	C	CA103C103G	1000,100000,1000	false	false	110000	110000	false	false	true
+CHAIN	1	2	C	CA104C104G	1000,100000,1000	false	false	110000	110000	false	false	true
+CHAIN	1	2	C	CA105C105G	1000,100000,1000	false	false	110000	110000	false	false	true
+CHAIN	1	2	C	CA106C106G	1000,100000,1000	false	false	110000	110000	false	false	true
+CHAIN	1	2	C	CA107C107G	1000,100000,1000	false	false	110000	110000	false	false	true
+CHAIN	1	2	C	CA108C108G	1000,100000,1000	false	false	110000	110000	false	false	true
+CHAIN	1	2	C	CA109C109G	1000,100000,1000	false	false	110000	110000	false	false	true
+CHAIN	2	3	G	GT	1000000	true	true	1000000	1000000	false	true	false
+LLR	0	0	0.0	0
+LLR	0	0	0.001	0
+LLR	0	0	0.01	0
+LLR	0	0	0.1	0
+LLR	0	0	0.5	0
+LLR	0	0	1.0	0
+LLR	0	1	0.0	4034b88c85629fe1
+LLR	0	1	0.001	4018da32a4c743d4
+LLR	0	1	0.01	400f3ce976a3f52a
+LLR	0	1	0.1	3ff95e3c910e471a
+LLR	0	1	0.5	bfbdb9046955a530
+LLR	0	1	1.0	bfe284c60f075fc5
+LLR	0	2	0.0	4044dd5f4989fefd
+LLR	0	2	0.001	40296db417c0a49a
+LLR	0	2	0.01	402030c63b6fb0b6
+LLR	0	2	0.1	400b50de806095f3
+LLR	0	2	0.5	bfc35a87c10958f0
+LLR	0	2	1.0	bff2e3a96256a402
+LLR	0	100	0.0	40a0b193f9e4cd1e
+LLR	0	100	0.001	4085707a001c88bf
+LLR	0	100	0.01	407c6e6e69f28f9c
+LLR	0	100	0.1	406ae9eff8b50d00
+LLR	0	100	0.5	c0012cb9ff1b0bae
+LLR	0	100	1.0	c05fb808ba7dfd2f
+LLR	1	0	0.0	bfe62e42fefa39ef
+LLR	1	0	0.001	bfe62e42fefa39ef
+LLR	1	0	0.01	bfe62e42fefa39ef
+LLR	1	0	0.1	bfe62e42fefa39ef
+LLR	1	0	0.5	bfe62e42fefa39ef
+LLR	1	0	1.0	bfe62e42fefa39ef
+LLR	1	1	0.0	40339f4ddda2283d
+LLR	1	1	0.001	4014744524beb0e8
+LLR	1	1	0.01	400677a7e6323f59
+LLR	1	1	0.1	3fe08813f110ffdc
+LLR	1	1	0.5	bff1b4c2c850a1bf
+LLR	1	1	1.0	bff8fb070979724b
+LLR	1	2	0.0	40442bed31850ae8
+LLR	1	2	0.001	4026a75aa92b81ec
+LLR	1	2	0.01	401ada6798ec7de4
+LLR	1	2	0.1	4000e862dba65fcd
+LLR	1	2	0.5	bff2c8f2152ba3f0
+LLR	1	2	1.0	c000a42745d75811
+LLR	1	100	0.0	40a0a853fd74c775
+LLR	1	100	0.001	40854b774935d5a8
+LLR	1	100	0.01	407c249217209319
+LLR	1	100	0.1	406a60d8a902e6b7
+LLR	1	100	0.5	c002686ecf556ed6
+LLR	1	100	1.0	c05cc0f255d54fbf
+LLR	10	0	0.0	c0032ee3b77f374c
+LLR	10	0	0.001	c0032ee3b77f374c
+LLR	10	0	0.01	c0032ee3b77f374c
+LLR	10	0	0.1	c0032ee3b77f374c
+LLR	10	0	0.5	c0032ee3b77f374c
+LLR	10	0	1.0	c0032ee3b77f374c
+LLR	10	1	0.0	403087ff4df0ed1c
+LLR	10	1	0.001	4000196807df0a46
+LLR	10	1	0.01	bfd5cb9aeaa6be70
+LLR	10	1	0.1	c007abf3182a3aa7
+LLR	10	1	0.5	c011ff43d22e3564
+LLR	10	1	1.0	c0131907e192d445
+LLR	10	2	0.0	40420967bedbaed9
+LLR	10	2	0.001	401c2ed5e7f4c8f8
+LLR	10	2	0.01	4003420d7ccfe578
+LLR	10	2	0.1	c00417b1b994044a
+LLR	10	2	0.5	c0171971ffd7e7aa
+LLR	10	2	1.0	c019d4bdd13e15f0
+LLR	10	100	0.0	40a0726e65732d27
+LLR	10	100	0.001	408473c70e34d72c
+LLR	10	100	0.01	407a769ff90974ff
+LLR	10	100	0.1	406759d87825ddef
+LLR	10	100	0.5	c012817ec9731fbc
+LLR	10	100	1.0	c05231add31ccba6
+LLR	1000	0	0.0	c01ba2909ce4f864
+LLR	1000	0	0.001	c01ba2909ce4f864
+LLR	1000	0	0.01	c01ba2909ce4f864
+LLR	1000	0	0.1	c01ba2909ce4f864
+LLR	1000	0	0.5	c01ba2909ce4f864
+LLR	1000	0	1.0	c01ba2909ce4f864
+LLR	1000	1	0.0	401e61d21c9446d0
+LLR	1000	1	0.001	c021f6ce5fae9aed
+LLR	1000	1	0.01	c029a516d182cc52
+LLR	1000	1	0.1	c02b7152c5207e60
+LLR	1000	1	0.5	c02b9edca95064dc
+LLR	1000	1	1.0	c02ba23daf5a2046
+LLR	1000	2	0.0	4036cabe33223263
+LLR	1000	2	0.001	c021ef02bed0bce0
+LLR	1000	2	0.01	c0313433167c4c30
+LLR	1000	2	0.1	c033bafc2f3aa97a
+LLR	1000	2	0.5	c034025b39e3a8e9
+LLR	1000	2	1.0	c03407df26f8a343
+LLR	1000	100	0.0	409c29e68f7b6d0c
+LLR	1000	100	0.001	4075df85e6a1124d
+LLR	1000	100	0.01	405b70a88ad87d9c
+LLR	1000	100	0.1	c064bf506df9f7e0
+LLR	1000	100	0.5	c0733eb7a1fb5486
+LLR	1000	100	1.0	c074aa660afb5dc2

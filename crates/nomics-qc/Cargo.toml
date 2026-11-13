@@ -1,0 +1,15 @@
+[package]
+name = "nomics-qc"
+description = "Source-exact VCF reports for vcftools 0.1.17 and bcftools 1.23.1"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+nomics-io.workspace = true
+nomics-mem.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,3 @@
+# Cortex-X925/A725 (GB10): enable SVE2 etc. for native builds on the Spark.
+[target.aarch64-unknown-linux-gnu]
+rustflags = ["-C", "target-cpu=native"]

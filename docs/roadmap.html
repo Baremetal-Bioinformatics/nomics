@@ -1,0 +1,197 @@
+<title>nomics Roadmap after 30×</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column; a time budget for a 30x genome, then ranked levers as rows
+   (status pill, gain, risk), a ruled-out table, the scope table, and the order of work.
+   Tokens shared with the nomics Stack Map. */
+:root {
+  --bg: #f4f6f7; --panel: #ffffff; --ink: #1c2730; --muted: #5b6b77; --rule: #cfd8de;
+  --cpu: #1f7a8c; --cpu-fill: #e3f1f4; --gpu: #9a5314; --gpu-fill: #fbefe2;
+  --mem: #5b4b9a; --mem-fill: #ece9f6; --exact: #286b43; --exact-fill: #e5f3ea;
+  --warn: #b33a3a; --warn-fill: #f8e6e6;
+  --display: "Barlow Semi Condensed", "Arial Narrow", sans-serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121a20; --panel: #18222a; --ink: #dfe7ec; --muted: #93a4af; --rule: #2c3a44;
+    --cpu: #5fc0d2; --cpu-fill: #15323a; --gpu: #e59a52; --gpu-fill: #3a2816;
+    --mem: #a596e6; --mem-fill: #272241; --exact: #6cc68f; --exact-fill: #183626;
+    --warn: #ec7b7b; --warn-fill: #3a1d1d; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121a20; --panel: #18222a; --ink: #dfe7ec; --muted: #93a4af; --rule: #2c3a44;
+  --cpu: #5fc0d2; --cpu-fill: #15323a; --gpu: #e59a52; --gpu-fill: #3a2816;
+  --mem: #a596e6; --mem-fill: #272241; --exact: #6cc68f; --exact-fill: #183626;
+  --warn: #ec7b7b; --warn-fill: #3a1d1d; color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+main { max-width: 900px; margin: 0 auto; padding-inline: 20px; padding-block: 32px 56px; display: grid; gap: 36px; }
+header { display: grid; gap: 8px; }
+.eyebrow { font-family: var(--display); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; color: var(--muted); }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 5vw, 42px); line-height: 1.08; margin: 0; text-wrap: balance; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 24px; margin: 0; text-wrap: balance; }
+h3 { font-family: var(--display); font-weight: 600; font-size: 19px; margin: 0; text-wrap: balance; }
+p { margin: 0; max-width: 68ch; }
+.lede { color: var(--muted); }
+section { display: grid; gap: 14px; }
+code { font-family: var(--mono); font-size: 0.86em; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* time budget */
+.budget { display: grid; gap: 10px; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 16px; }
+.brow { display: grid; grid-template-columns: 11rem 1fr 4.5rem; gap: 12px; align-items: center; }
+.brow .lbl { font-family: var(--display); font-weight: 600; }
+.brow .val { font-family: var(--mono); font-size: 13px; text-align: right; font-variant-numeric: tabular-nums; }
+.track { height: 14px; background: var(--bg); border-radius: 3px; overflow: hidden; }
+.fill { height: 100%; border-radius: 3px; }
+.fill.cpu { background: var(--cpu); } .fill.mem { background: var(--mem); } .fill.muted { background: var(--muted); }
+.note { color: var(--muted); font-size: 14px; }
+
+/* levers */
+.levers { display: grid; gap: 14px; }
+.lever { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 16px 18px; display: grid; gap: 8px; min-width: 0; }
+.lever.lead { border-color: var(--exact); }
+.lhead { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: baseline; }
+.rank { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14px; color: var(--muted); }
+.meta b { color: var(--ink); font-weight: 600; }
+.pill { font-family: var(--display); font-weight: 600; font-size: 12px; letter-spacing: .05em; text-transform: uppercase; padding: 1px 8px; border-radius: 999px; border: 1.5px solid; }
+.pill.progress { color: var(--exact); border-color: var(--exact); background: var(--exact-fill); }
+.pill.next { color: var(--muted); border-color: var(--muted); border-style: dashed; }
+.lever ul { margin: 0; padding-left: 1.2em; display: grid; gap: 4px; max-width: 70ch; }
+
+/* tables */
+.tablewrap { overflow-x: auto; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--rule); }
+th { font-family: var(--display); font-weight: 600; font-size: 14px; letter-spacing: .03em; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td.eff { font-family: var(--mono); font-size: 13px; white-space: nowrap; }
+.no { color: var(--warn); font-weight: 600; }
+
+ol.order { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; max-width: 70ch; }
+footer { color: var(--muted); font-size: 14px; border-top: 1px solid var(--rule); padding-top: 14px; }
+
+@media (max-width: 560px) {
+  .brow { grid-template-columns: 1fr 4rem; }
+  .brow .track { grid-column: 1 / -1; grid-row: 2; }
+}
+</style>
+
+<main>
+  <header>
+    <div class="eyebrow">nomics · HG002 30× WGS on the DGX Spark · research pass, 2026-10-11</div>
+    <h1>After the 30× gate: what to speed up, and what to add</h1>
+    <p class="lede">Every change must keep output bit-identical to sarek 3.10.0 / GATK 4.6.2.0 at all stage boundaries. The levers below are ranked by exact speed gain against proof burden; the scope list is what stands between real users' data and the pipeline.</p>
+    <p class="lede"><strong>Update 2026-10-13.</strong> A 36-hour iteration run landed levers 1, 3 and 5, GPU mate rescue, poly-G trimming and multi-lane input. The 30× genome went from 2 h 47 min to 2 h 08 min, still identical (41/41). The live record is the iteration board on the stack map.</p>
+  </header>
+
+  <section aria-labelledby="budget-h">
+    <h2 id="budget-h">Where a 30× genome spends its time (measured)</h2>
+    <div class="budget" role="img" aria-label="Measured 30x WGS time: alignment 1 hour 55 minutes, HaplotypeCaller 24 minutes, markdup and BQSR 22 minutes, prep 5 minutes; 2 hours 47 minutes total.">
+      <div class="brow"><span class="lbl">Alignment</span><div class="track"><div class="fill cpu" style="width:69.3%"></div></div><span class="val">1 h 55 m</span></div>
+      <div class="brow"><span class="lbl">HaplotypeCaller</span><div class="track"><div class="fill mem" style="width:14.4%"></div></div><span class="val">24 min</span></div>
+      <div class="brow"><span class="lbl">Markdup + BQSR</span><div class="track"><div class="fill muted" style="width:13.4%"></div></div><span class="val">22 min</span></div>
+      <div class="brow"><span class="lbl">Prep</span><div class="track"><div class="fill muted" style="width:2.9%"></div></div><span class="val">5 min</span></div>
+      <p class="note">Measured on the first full 30× run (2026-10-11), whole-genome mode on one DGX Spark: 2 h 47 min end to end, peak 76 GB, all 41 stage outputs identical to sarek. For scale: sarek took 3 h 40 min on a 240-vCPU x86 box. Alignment is now the only large lever.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="levers-h">
+    <h2 id="levers-h">Exact speed levers, ranked</h2>
+    <div class="levers">
+      <article class="lever lead">
+        <div class="lhead"><span class="rank">1</span><h3>PairHMM computes each shared haplotype prefix once</h3><span class="pill progress">landed</span></div>
+        <div class="meta"><span>Stage <b>HaplotypeCaller</b></span><span>Gain <b>PairHMM 2.28×; HC −18 % on the chr20 slice</b></span><span>Risk <b>gated</b></span></div>
+        <ul>
+          <li>GATK 4.6.2.0 has prefix-reuse code (<code>hapStartIndex</code>) that never runs: every haplotype is recomputed from column 1.</li>
+          <li>For haplotypes of equal length, columns of a shared prefix and the running final sum up to it are bit-identical, so computing them once is exact. 59 % of all cells in our PairHMM dump fall in such prefixes.</li>
+          <li>Landed 2026-10-11: lanes over 8 reads, a sorted haplotype traversal with saved columns at branch points. PairHMM 1.90×10¹⁰ → 4.33×10¹⁰ cells/s on 20 threads, bitwise identical on 639,220 pairs and on GATK's own likelihood oracle (993 regions). Gates 18/18; HaplotypeCaller on the 30× chr20 slice 121 → 99 s. The rest of HaplotypeCaller (assembly, traversal) now sets its pace.</li>
+        </ul>
+      </article>
+      <article class="lever">
+        <div class="lhead"><span class="rank">2</span><h3>Mate rescue: prune and band the alignment exactly</h3><span class="pill next">next</span></div>
+        <div class="meta"><span>Stage <b>alignment</b></span><span>Gain <b>est. 20–30 % of WGS alignment</b></span><span>Risk <b>medium-high</b></span></div>
+        <ul>
+          <li>bwa-mem3's approach: exact 5-mer hits between mate and window bound the best possible score; only rows that can reach the threshold are computed, in diagonal bands.</li>
+          <li>Our rescue windows are ~1,339 rows for a 151 bp mate, so most cells cannot matter.</li>
+          <li>The proof must reproduce bwa's second-best score bookkeeping, which bwa-mem2's batched kernels got wrong (XS ±1–4, MAPQ ±2–18), and the start-recovery pass. Gate every call on the 62k and 70k dumps first.</li>
+        </ul>
+      </article>
+      <article class="lever">
+        <div class="lhead"><span class="rank">3</span><h3>Run HaplotypeCaller's interval groups concurrently</h3><span class="pill progress">landed</span></div>
+        <div class="meta"><span>Stage <b>HaplotypeCaller</b></span><span>Gain <b>~10 %</b></span><span>Risk <b>low</b></span></div>
+        <ul>
+          <li>sarek's 21 groups each start with fresh random-number state, so they are independent. Threads are ~91 % busy today; the win is in the tails.</li>
+        </ul>
+      </article>
+      <article class="lever">
+        <div class="lhead"><span class="rank">4</span><h3>Small certified alignment shortcuts</h3><span class="pill next">later</span></div>
+        <div class="meta"><span>Stage <b>alignment</b></span><span>Gain <b>5–10 % combined</b></span><span>Risk <b>low</b></span></div>
+        <ul>
+          <li>Repeat-job reuse in rescue, skipping provably no-op dedups, memoized gap limits, an index for the containment sweep, a certified band for the final CIGAR.</li>
+        </ul>
+      </article>
+      <article class="lever">
+        <div class="lhead"><span class="rank">5</span><h3>Chaining with a denser suffix array</h3><span class="pill progress">landed</span></div>
+        <div class="meta"><span>Stage <b>alignment</b></span><span>Gain <b>chaining 22 → ~10 µs/read</b></span><span>Risk <b>low once unblocked</b></span></div>
+        <ul>
+          <li>Landed 2026-10-13 at interval 2 (22 GB index): chaining on the 30× chunk 42 → 27.5 µs per record, chunk alignment 430 → 414.5 s, identical output. Interval 1 ran without the old CUDA error, but was slower overall at a 77.5 GB peak.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="out-h">
+    <h2 id="out-h">Ruled out</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Idea</th><th>Finding</th></tr></thead>
+        <tbody>
+          <tr><td>NEON extension within a row</td><td>Exact, but no faster than bwa's scalar loop on these cores (rows average ~40 cells).</td></tr>
+          <tr><td>Two rescue alignments interleaved per thread</td><td>Exact, 1.45× on Apple M, only 1.08× on the Spark.</td></tr>
+          <tr><td>GPU seed extension as the default</td><td>A row-per-warp <code>ksw_extend2</code> is exact (1.96M calls) but neutral end to end: each batch waits on two launches while the GPU also seeds and rescues. Kept opt-in. (GPU mate rescue, once listed here at 3×10⁹ cells/s, was rewritten as a warp wavefront at 2.4–2.7×10¹¹ and is now the default.)</td></tr>
+          <tr><td>Float-first PairHMM, seed reordering, tie-break changes, a different <code>-K</code></td><td><span class="no">Change output.</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="scope-h">
+    <h2 id="scope-h">Scope beyond the 18 gates</h2>
+    <p>Our BAMs and VCF equal sarek's, so any tool run unmodified on them gives sarek's result; porting one only buys speed. Each item below needs a new sarek golden first.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Item</th><th>Effort</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Poly-G trimming (NovaSeq, NextSeq) <span class="pill progress">landed</span></td><td class="eff">S–M</td><td>fastp enables it from instrument read names; our prep refuses such input, so most users' own FASTQs fail today.</td></tr>
+          <tr><td>Multiple lanes and read groups, optical duplicates <span class="pill progress">landed</span></td><td class="eff">M</td><td>The read group is hard-coded to one lane; Picard's optical-duplicate count is never computed.</td></tr>
+          <tr><td>BAM and CRAM indexes</td><td class="eff">S–M</td><td>Already a stated, unproduced gate; every viewer needs one.</td></tr>
+          <tr><td>CRAM output, record-identical</td><td class="eff">M</td><td>sarek's default output format; byte-exact would need htslib's codec choices.</td></tr>
+          <tr><td>QC files: samtools stats, mosdepth, bcftools stats, vcftools, FastQC data</td><td class="eff">M</td><td>On by default in sarek, deterministic, cheap to gate.</td></tr>
+          <tr><td>GVCF output, then single-sample GenotypeGVCFs</td><td class="eff">L + M</td><td>Cohorts and reanalysis. New: reference-confidence blocks, <code>&lt;NON_REF&gt;</code>, physical phasing.</td></tr>
+          <tr><td>Other references: no-BED intervals, BQSR skip, ALT contigs</td><td class="eff">M</td><td>GRCh37, T2T, GRCh38 with <code>.alt</code>.</td></tr>
+          <tr><td>Mutect2 tumor–normal</td><td class="eff">L+</td><td>A separate track that reuses assembly and PairHMM.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Not worth porting: DeepVariant, the CNN variant filter, VEP and snpEff. Run them on our outputs as they are.</p>
+  </section>
+
+  <section aria-labelledby="order-h">
+    <h2 id="order-h">Order of work after the 30× gate</h2>
+    <ol class="order">
+      <li>Shared-prefix PairHMM (landed); next on HaplotypeCaller: assembly and the per-group tails.</li>
+      <li>Poly-G trimming and multi-lane / read-group support.</li>
+      <li>Exact mate-rescue pruning.</li>
+      <li>Indexes, CRAM and the QC files.</li>
+      <li>GVCF output.</li>
+    </ol>
+  </section>
+
+  <footer>Sources: our measurements (docs/research/alignment.md, bench/), GATK 4.6.2.0 and bwa 0.7.19 source, bwa-mem2 and bwa-mem3 code and docs, nf-core/sarek 3.10.0 configuration. Full notes in docs/research/roadmap.md.</footer>
+</main>

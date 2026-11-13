@@ -1,0 +1,20 @@
+# sarek 3.10.0 parameters for the tier1 reference runs with --joint_germline (HC in GVCF mode, GenomicsDBImport, GenotypeGVCFs). ${HOME} is expanded by run_sarek.sh.
+input: samplesheet.csv
+outdir: results
+igenomes_ignore: true
+fasta: ${HOME}/omics/ref/GATK.GRCh38/Sequence/WholeGenomeFasta/Homo_sapiens_assembly38.fasta
+fasta_fai: ${HOME}/omics/ref/GATK.GRCh38/Sequence/WholeGenomeFasta/Homo_sapiens_assembly38.fasta.fai
+dict: ${HOME}/omics/ref/GATK.GRCh38/Sequence/WholeGenomeFasta/Homo_sapiens_assembly38.dict
+bwa: ${HOME}/omics/ref/GATK.GRCh38/Sequence/BWAIndex/
+dbsnp: ${HOME}/omics/ref/GATK.GRCh38/Annotation/GATKBundle/dbsnp_146.hg38.vcf.gz
+dbsnp_tbi: ${HOME}/omics/ref/GATK.GRCh38/Annotation/GATKBundle/dbsnp_146.hg38.vcf.gz.tbi
+known_indels: ${HOME}/omics/ref/GATK.GRCh38/Annotation/GATKBundle/{Mills_and_1000G_gold_standard.indels.hg38,beta/Homo_sapiens_assembly38.known_indels}.vcf.gz
+known_indels_tbi: ${HOME}/omics/ref/GATK.GRCh38/Annotation/GATKBundle/{Mills_and_1000G_gold_standard.indels.hg38,beta/Homo_sapiens_assembly38.known_indels}.vcf.gz.tbi
+wes: true
+intervals: ${HOME}/omics/data/Agilent_v7.bed
+aligner: bwa-mem
+tools: haplotypecaller
+joint_germline: true
+skip_tools: haplotypecaller_filter
+save_output_as_bam: true
+save_mapped: true

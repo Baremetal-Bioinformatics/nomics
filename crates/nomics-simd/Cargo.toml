@@ -1,0 +1,11 @@
+[package]
+name = "nomics-simd"
+description = "Hand-written NEON kernels (the striped Smith-Waterman rows of BWA's ksw)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lints]
+workspace = true

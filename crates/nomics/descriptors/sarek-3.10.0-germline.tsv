@@ -1,0 +1,59 @@
+# nomics pipeline descriptor: nf-core/sarek 3.10.0, germline FASTQ -> VCF with
+# HaplotypeCaller, configured as the goldens are (docs/VERIFY.md). Tab-separated:
+# key, then values. `{prefix}` and `{lane}` are filled in by verify.
+format	nomics-descriptor/1
+id	sarek-3.10.0-germline
+pipeline	nf-core/sarek
+version	3.10.0
+commit	8ccac7ad37b05dd792447763bf9671b719824587
+source	https://github.com/nf-core/sarek.git	3.10.0
+nextflow	26.04.6	docker.io/nextflow/nextflow:26.04.6
+# Per platform: Nextflow profiles, then the overlay config verify adds.
+profile	x86_64	docker	hcjava
+profile	aarch64	docker,arm64	arm64-pinned
+# arm64 task containers, by process: the frozen Seqera Wave images the arm64
+# goldens ran (tier0-wes-20261008-r1 and tier1-wes-20261008-r1 report.html list
+# the same 19 processes on these 11 images), pinned by registry digest. With
+# these, verify runs with Wave off and needs no network after `verify fetch`.
+container	aarch64	BCFTOOLS_STATS	community.wave.seqera.io/library/bcftools_htslib:1.23.1--583f22aacd68faff@sha256:ad58d24fe1e9381d727e7145679d4fcfb0943239ef1dd7789dfd1f4c58a14b63
+container	aarch64	BWAMEM1_MEM	community.wave.seqera.io/library/bwa_htslib_samtools:73cb446d71839fbc@sha256:6ca73db8a8d9004b2dfd06781f0250edd4989e2adfba0dcc3396561339c24b7f
+container	aarch64	CREATE_INTERVALS_BED	community.wave.seqera.io/library/gawk:5.3.0--2412a37dc7bea713@sha256:c15a976c09383a27f3493bc7df08147c580c7c4c002ffce66d5be077de0a9bfc
+container	aarch64	FASTP	community.wave.seqera.io/library/fastp:1.1.0--5650575a9fd255b5@sha256:b22403647815e527b03bf585499d2197542054ab90739dcfab2d29a1b8aee435
+container	aarch64	FASTQC	community.wave.seqera.io/library/fastqc:0.12.1--1707b8e896a1f483@sha256:c7cdf1bd0bd7557ba7d0a986f1e907bed45cd54a484f3a81dc5a472abdf318ba
+container	aarch64	GATK4_APPLYBQSR	community.wave.seqera.io/library/gatk4_htslib_samtools:6fd46722be032bdd@sha256:43aa6d133a779b815f65a526c772bf262635478505f96e85ac032ffc98d5057c
+container	aarch64	GATK4_BASERECALIBRATOR	community.wave.seqera.io/library/gatk4_htslib_samtools:6fd46722be032bdd@sha256:43aa6d133a779b815f65a526c772bf262635478505f96e85ac032ffc98d5057c
+container	aarch64	GATK4_HAPLOTYPECALLER	community.wave.seqera.io/library/gatk4_htslib_samtools:6fd46722be032bdd@sha256:43aa6d133a779b815f65a526c772bf262635478505f96e85ac032ffc98d5057c
+container	aarch64	GATK4_MARKDUPLICATES	community.wave.seqera.io/library/gatk4_htslib_samtools:6fd46722be032bdd@sha256:43aa6d133a779b815f65a526c772bf262635478505f96e85ac032ffc98d5057c
+container	aarch64	INDEX_MERGE_BAM	community.wave.seqera.io/library/htslib_samtools:1.24--1523e39b702f9721@sha256:d264355f7860e22043f7ac37e26313f3b31052d7e4563635d306a2e75b6c4f99
+container	aarch64	MERGE_BAM	community.wave.seqera.io/library/htslib_samtools:1.24--1523e39b702f9721@sha256:d264355f7860e22043f7ac37e26313f3b31052d7e4563635d306a2e75b6c4f99
+container	aarch64	MOSDEPTH	community.wave.seqera.io/library/htslib_mosdepth_gzip:f3fe0f896944028f@sha256:3da90f67f1444ba7b843c056f2b56fe8f488281c7b94bc93dbfbd7577547da82
+container	aarch64	MULTIQC	community.wave.seqera.io/library/multiqc:1.35--6af295f01b9d77f1@sha256:fda676c4508c9a1b819bb6001577182fc752aec43534d942528beb19f82d6a66
+container	aarch64	SAMTOOLS_STATS	community.wave.seqera.io/library/htslib_samtools:1.24--1523e39b702f9721@sha256:d264355f7860e22043f7ac37e26313f3b31052d7e4563635d306a2e75b6c4f99
+container	aarch64	TABIX_BGZIPTABIX_INTERVAL_COMBINED	community.wave.seqera.io/library/htslib_xz:9f4311e13092d1a2@sha256:5c02081192405d9492aeede28ac4492b6371f67c25ad24bfba2966a282599d72
+container	aarch64	TABIX_BGZIPTABIX_INTERVAL_SPLIT	community.wave.seqera.io/library/htslib_xz:9f4311e13092d1a2@sha256:5c02081192405d9492aeede28ac4492b6371f67c25ad24bfba2966a282599d72
+container	aarch64	VCFTOOLS_SUMMARY	community.wave.seqera.io/library/vcftools:0.1.17--41690ac9d44f2255@sha256:c0d07fb860eec4e1c3319076daf1ee95c1d0b53cb3a190ef8bd85460d31ce97e
+container	aarch64	VCFTOOLS_TSTV_COUNT	community.wave.seqera.io/library/vcftools:0.1.17--41690ac9d44f2255@sha256:c0d07fb860eec4e1c3319076daf1ee95c1d0b53cb3a190ef8bd85460d31ce97e
+container	aarch64	VCFTOOLS_TSTV_QUAL	community.wave.seqera.io/library/vcftools:0.1.17--41690ac9d44f2255@sha256:c0d07fb860eec4e1c3319076daf1ee95c1d0b53cb3a190ef8bd85460d31ce97e
+# sarek parameters, as reference/params.tier1.yaml.
+param	tools	haplotypecaller
+param	skip_tools	haplotypecaller_filter
+param	save_output_as_bam	true
+param	save_mapped	true
+param	aligner	bwa-mem
+# Values verify takes from the reference run and passes to `nomics run`.
+capture	scatter_order	trace
+capture	read_group_ds	md_bam_header
+# artifact	name	comparator	reference location	nomics location	normalization (docs/GATES.md)
+# A location is `root:pattern`; roots are tried in order. `work` searches
+# sarek's task directories, `results` its published tree (recursively), `run`
+# the nomics run directory. A name ending in `/*` is one artifact per file.
+artifact	chunk/*	fastq_chunk	work:*.fastp.fastq.gz	run:prep/*.fastp.fastq.gz	decompressed content per chunk
+artifact	mapped/*	bam	results,work:{prefix}.????.bam	run:mapped/{prefix}.????.bam	records; header without @PG
+artifact	md_bam	bam	results:{prefix}.md.bam	run:{prefix}.md.bam	records; header without @PG
+artifact	md_metrics	md_metrics	results:{prefix}.md.bam.metrics,{prefix}.md.metrics	run:{prefix}.md.metrics	bytes except lines 2 and 4
+artifact	recal_table	raw	results:{prefix}.recal.table	run:{prefix}.recal.table	bytes
+artifact	recal_bam	bam	results:{prefix}.recal.bam	run:{prefix}.recal.bam	records; header without @PG
+artifact	vcf	vcf	results:{prefix}.haplotypecaller.vcf.gz	run:{prefix}.haplotypecaller.vcf.gz	records; header without ##GATKCommandLine
+# Inputs verify refuses, with the reason it gives.
+refuse	dict	the reference .dict differs from GATK.GRCh38 (nomics is validated on GRCh38 only)
+refuse	multi_lane	more than one FASTQ pair (verify v1 takes one lane)
