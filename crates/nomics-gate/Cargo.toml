@@ -1,0 +1,15 @@
+[package]
+name = "nomics-gate"
+description = "Stage-boundary comparison against goldens"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+nomics-io.workspace = true
+nomics-simd.workspace = true
+
+[lints]
+workspace = true

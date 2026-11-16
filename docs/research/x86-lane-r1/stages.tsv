@@ -1,0 +1,7 @@
+stage	wall_s	peak_rss_gb
+prep	802.705	64.090
+align	13587.011	64.090
+markdup	589.182	64.090
+bqsr	697.349	64.090
+haplotypecaller	2199.547	88.472
+TOTAL	17187.189	88.472

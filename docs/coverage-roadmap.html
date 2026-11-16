@@ -1,0 +1,279 @@
+<title>nomics Coverage Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column. Positioning, then the decisions that gate the plan, then the plan as three
+   parallel tracks on a week axis, then the ranked portfolio and what was ruled out. Same family as the stack map. */
+:root {
+  --bg: #f4f6f7;
+  --panel: #ffffff;
+  --ink: #1c2730;
+  --muted: #5b6b77;
+  --rule: #cfd8de;
+  --a: #1f7a8c;      /* track A: finish sarek */
+  --a-fill: #e3f1f4;
+  --b: #5b4b9a;      /* track B: reuse our BWA */
+  --b-fill: #ece9f6;
+  --c: #9a5314;      /* track C: new aligners */
+  --c-fill: #fbefe2;
+  --go: #286b43;
+  --go-fill: #e5f3ea;
+  --cond: #8a6d0b;
+  --cond-fill: #f8f0d4;
+  --no: #b33a3a;
+  --no-fill: #f8e4e4;
+  --display: "Barlow Semi Condensed", "Arial Narrow", sans-serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121a20; --panel: #18222a; --ink: #dfe7ec; --muted: #93a4af; --rule: #2c3a44;
+    --a: #5fc0d2; --a-fill: #15323a; --b: #a596e6; --b-fill: #272241; --c: #e59a52; --c-fill: #3a2816;
+    --go: #6cc68f; --go-fill: #183626; --cond: #e0c060; --cond-fill: #3a3215; --no: #ec7b7b; --no-fill: #3d1d1d;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121a20; --panel: #18222a; --ink: #dfe7ec; --muted: #93a4af; --rule: #2c3a44;
+  --a: #5fc0d2; --a-fill: #15323a; --b: #a596e6; --b-fill: #272241; --c: #e59a52; --c-fill: #3a2816;
+  --go: #6cc68f; --go-fill: #183626; --cond: #e0c060; --cond-fill: #3a3215; --no: #ec7b7b; --no-fill: #3d1d1d;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.55; }
+main { max-width: 1080px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 56px; display: grid; gap: 34px; }
+header { display: grid; gap: 8px; }
+.eyebrow { font-family: var(--display); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; color: var(--muted); }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 4.4vw, 44px); line-height: 1.08; margin: 0; text-wrap: balance; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 24px; margin: 0; text-wrap: balance; }
+h3 { font-family: var(--display); font-weight: 600; font-size: 17px; margin: 0; }
+p { margin: 0; }
+.lede { max-width: 70ch; color: var(--muted); font-size: 16px; }
+.stamp { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+section { display: grid; gap: 14px; min-width: 0; }
+.intro { max-width: 72ch; color: var(--muted); }
+code { font-family: var(--mono); font-size: .88em; }
+
+.position { background: var(--panel); border: 1px solid var(--rule); border-left: 4px solid var(--go); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; }
+.position .claim { font-family: var(--display); font-weight: 600; font-size: clamp(19px, 2.4vw, 23px); line-height: 1.25; max-width: 60ch; text-wrap: pretty; }
+.vs { display: grid; gap: 8px 18px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); font-size: 14px; }
+.vs div { min-width: 0; }
+.vs b { font-family: var(--display); font-weight: 600; font-size: 15px; display: block; }
+.vs span { color: var(--muted); }
+
+.decisions { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: d; }
+.decisions li { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px 14px 52px; position: relative; display: grid; gap: 4px; counter-increment: d; }
+.decisions li::before { content: counter(d); position: absolute; left: 16px; top: 13px; width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--ink); font-family: var(--display); font-weight: 700; font-size: 14px; display: grid; place-items: center; }
+.decisions .q { font-weight: 600; }
+.decisions .rec { color: var(--muted); font-size: 14px; }
+.decisions .rec strong { color: var(--ink); font-weight: 600; }
+
+figure { margin: 0; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 16px; display: grid; gap: 10px; }
+.scroll { overflow-x: auto; }
+svg.plan { display: block; width: 100%; min-width: 820px; height: auto; color: var(--ink); font-family: var(--display); }
+svg .lab { font-size: 13px; fill: var(--ink); }
+svg .trk { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+svg .tick { font-size: 11px; fill: var(--muted); font-family: var(--mono); }
+svg .grid { stroke: var(--rule); stroke-width: 1; }
+svg .note { font-size: 11px; fill: var(--muted); }
+figcaption { color: var(--muted); font-size: 14px; max-width: 86ch; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 22px; height: 10px; border-radius: 2px; display: inline-block; }
+
+.table { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; min-width: 860px; font-size: 14px; }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--rule); }
+th { font-family: var(--display); font-weight: 600; font-size: 13px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+td small { display: block; color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+.pill { display: inline-block; font-family: var(--display); font-weight: 600; font-size: 12px; letter-spacing: .05em; text-transform: uppercase; padding: 1px 8px; border-radius: 999px; border: 1.5px solid; white-space: nowrap; }
+.pill.go { color: var(--go); border-color: var(--go); background: var(--go-fill); }
+.pill.cond { color: var(--cond); border-color: var(--cond); background: var(--cond-fill); }
+.pill.later { color: var(--muted); border-color: var(--muted); border-style: dashed; }
+.pill.no { color: var(--no); border-color: var(--no); background: var(--no-fill); }
+
+.cards { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+.card { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.card p { color: var(--muted); font-size: 14px; }
+.card .uses { font-family: var(--mono); font-size: 12px; color: var(--ink); }
+
+.ruled { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.ruled li { font-size: 14px; color: var(--muted); padding-left: 14px; border-left: 2px solid var(--no); min-width: 0; }
+.ruled li b { color: var(--ink); font-weight: 600; }
+
+.sources { font-size: 13px; color: var(--muted); display: grid; gap: 4px; }
+.sources code { color: var(--ink); }
+</style>
+
+<main>
+  <header>
+    <div class="eyebrow">new_omics · beyond germline</div>
+    <h1>Where nomics goes next</h1>
+    <p class="lede">Six research briefs surveyed the major bioinformatics pipeline families: somatic, germline extensions, long reads, bulk RNA-seq, single-cell and epigenomics. Each one asked the same questions: can the reference be reproduced exactly, what can we reuse, what would it take, and who needs it. This page turns them into a proposal.</p>
+    <div class="stamp">Plan, 2026-10-15 · priorities agreed · effort in engineer-weeks at the pace germline showed (about one agent-assisted week per pipeline stage) · briefs in docs/research/pipelines/</div>
+  </header>
+
+  <section aria-labelledby="pos-h">
+    <h2 id="pos-h">What nomics is for</h2>
+    <div class="position">
+      <p class="claim">Exactly the output of a named, current nf-core pipeline, at every stage boundary, on x86 and Arm, several times faster on one small box, with no licence. A lab validated on the reference switches by checking digests instead of revalidating.</p>
+      <div class="vs">
+        <div><b>NVIDIA Parabricks</b><span>Free and GPU-accelerated, but "functionally equivalent" to GATK 4.3 and BWA 0.7.15, not identical to today's pins.</span></div>
+        <div><b>Sentieon</b><span>Matches GATK 3.7–4.4 by its own account; licensed per core-year. DNAscope sells better accuracy, not equivalence.</span></div>
+        <div><b>Illumina DRAGEN</b><span>Fastest of all on FPGA and instruments; claims higher accuracy, and a 2025 benchmark found it the least concordant with GATK.</span></div>
+        <div><b>elPrep 5</b><span>The only precedent for bit-exact output (GATK 4.1.3.0, Java mode), but with no aligner and no release since 2022.</span></div>
+      </div>
+    </div>
+    <p class="intro">Each new pipeline should keep that claim intact. So the ranking below favours work where the reference is deterministic and open, and where code we already trust carries over. It does not reward headline speed alone, where Parabricks and DRAGEN are hard to beat.</p>
+  </section>
+
+  <section aria-labelledby="dec-h">
+    <h2 id="dec-h">Decided, and still open</h2>
+    <ol class="decisions">
+      <li><span class="q">Depth before breadth: decided, finish sarek first.</span><span class="rec">GVCF mode, joint genotyping, the Mutect2 somatic chain, then TIDDIT structural variants. Every one keeps "identical to sarek" true for more of what sarek users run, and sarek work gets first call on the Spark.</span></li>
+      <li><span class="q">Next modality: decided, expression before long reads.</span><span class="rec">Bulk RNA-seq and single-cell share one exact STAR, so they form one track. Long reads and DeepVariant move to later, which also defers the question of a non-exact gate for neural-network callers.</span></li>
+      <li><span class="q">Annotation: out of scope.</span><span class="rec">nomics stops at the VCF and does not port VEP.</span></li>
+      <li><span class="q">Open: is reading GPL source as the spec a stated policy?</span><span class="rec">We already do it with bwa; RNA-seq adds featureCounts, RSeQC and Qualimap. <strong>Recommend yes.</strong> Cell Ranger and Space Ranger stay out either way: their source is published for use with 10x products only.</span></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="plan-h">
+    <h2 id="plan-h">The plan: sarek first, then expression</h2>
+    <p class="intro">Tracks run side by side, with Codex and Claude workers writing code and the Spark gating one candidate at a time. Solid bars use each brief's low estimate; the paler extension reaches its high estimate. Diamonds are decision points where a result can stop or reshape the track.</p>
+    <figure>
+      <div class="scroll">
+        <svg class="plan" viewBox="0 0 980 490" role="img" aria-label="Proposed timeline over 22 weeks. Track A finishes sarek: Mutect2 goldens week 0 to 1, GVCF mode weeks 0 to 3, joint genotyping weeks 3 to 6, Mutect2 somatic chain weeks 6 to 17, TIDDIT structural variants weeks 17 to 22. Track B is expression: decision runs weeks 0 to 2, the RNA-seq core on golden STAR BAMs weeks 2 to 4, STARsolo counting weeks 4 to 6, an exact STAR weeks 6 to 14, then the rest of RNA-seq weeks 14 to 21 and single-cell on our STAR weeks 14 to 17. Track C reuses our BWA: methylseq weeks 4 to 10, then ATAC-seq and ChIP-seq weeks 10 to 17.5. Long reads come later.">
+          <defs>
+            <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="currentColor" stroke-width="1.4" opacity=".35"/></pattern>
+          </defs>
+          <g class="grid"><line x1="200" y1="30" x2="200" y2="462"/><line x1="268" y1="30" x2="268" y2="462"/><line x1="336" y1="30" x2="336" y2="462"/><line x1="404" y1="30" x2="404" y2="462"/><line x1="472" y1="30" x2="472" y2="462"/><line x1="540" y1="30" x2="540" y2="462"/><line x1="608" y1="30" x2="608" y2="462"/><line x1="676" y1="30" x2="676" y2="462"/><line x1="744" y1="30" x2="744" y2="462"/><line x1="812" y1="30" x2="812" y2="462"/><line x1="880" y1="30" x2="880" y2="462"/><line x1="948" y1="30" x2="948" y2="462"/></g>
+          <g text-anchor="middle"><text class="tick" x="200" y="22">wk 0</text><text class="tick" x="268" y="22">2</text><text class="tick" x="336" y="22">4</text><text class="tick" x="404" y="22">6</text><text class="tick" x="472" y="22">8</text><text class="tick" x="540" y="22">10</text><text class="tick" x="608" y="22">12</text><text class="tick" x="676" y="22">14</text><text class="tick" x="744" y="22">16</text><text class="tick" x="812" y="22">18</text><text class="tick" x="880" y="22">20</text><text class="tick" x="948" y="22">22</text></g>
+                    <text class="trk" x="12" y="54" fill="var(--a)">A · Finish sarek</text>
+          <text class="lab" x="12" y="80">Mutect2 goldens (r1/r2)</text>
+          <rect x="200" y="68" width="34" height="16" rx="2" fill="var(--a)"/>
+          <text class="lab" x="12" y="106">HC GVCF mode</text>
+          <rect x="200" y="94" width="68" height="16" rx="2" fill="var(--a)"/>
+          <rect x="268" y="94" width="34" height="16" rx="2" fill="var(--a)" opacity="0.35"/>
+          <text class="lab" x="12" y="132">Joint genotyping</text>
+          <rect x="302" y="120" width="68" height="16" rx="2" fill="var(--a)"/>
+          <rect x="370" y="120" width="34" height="16" rx="2" fill="var(--a)" opacity="0.35"/>
+          <text class="lab" x="12" y="158">Mutect2 somatic chain</text>
+          <rect x="404" y="146" width="289" height="16" rx="2" fill="var(--a)"/>
+          <rect x="693" y="146" width="85" height="16" rx="2" fill="var(--a)" opacity="0.35"/>
+          <path d="M 557 140 l 6 8 l -6 8 l -6 -8 z" fill="var(--panel)" stroke="var(--ink)" stroke-width="1.5"/>
+          <text class="note" x="567" y="140">first gate: raw VCF + stats</text>
+          <text class="lab" x="12" y="184">TIDDIT structural variants</text>
+          <rect x="778" y="172" width="102" height="16" rx="2" fill="var(--a)"/>
+          <rect x="880" y="172" width="68" height="16" rx="2" fill="var(--a)" opacity="0.35"/>
+          <text class="trk" x="12" y="214" fill="var(--c)">B · Expression: RNA-seq, single-cell</text>
+          <text class="lab" x="12" y="240">Decision runs</text>
+          <rect x="200" y="228" width="68" height="16" rx="2" fill="var(--c)"/>
+          <path d="M 268 222 l 6 8 l -6 8 l -6 -8 z" fill="var(--panel)" stroke="var(--ink)" stroke-width="1.5"/>
+          <text class="note" x="280" y="240">does the reference repeat itself?</text>
+          <text class="lab" x="12" y="266">RNA-seq core on golden BAMs</text>
+          <rect x="268" y="254" width="68" height="16" rx="2" fill="var(--c)"/>
+          <text class="lab" x="12" y="292">STARsolo counting</text>
+          <rect x="336" y="280" width="68" height="16" rx="2" fill="var(--c)"/>
+          <text class="lab" x="12" y="318">Exact STAR (index, two-pass)</text>
+          <rect x="404" y="306" width="170" height="16" rx="2" fill="var(--c)"/>
+          <rect x="574" y="306" width="102" height="16" rx="2" fill="var(--c)" opacity="0.35"/>
+          <text class="lab" x="12" y="344">RNA-seq QC, StringTie, one process</text>
+          <rect x="676" y="332" width="187" height="16" rx="2" fill="var(--c)"/>
+          <rect x="863" y="332" width="51" height="16" rx="2" fill="var(--c)" opacity="0.35"/>
+          <text class="lab" x="12" y="370">Single-cell on our STAR</text>
+          <rect x="676" y="358" width="68" height="16" rx="2" fill="var(--c)"/>
+          <rect x="744" y="358" width="34" height="16" rx="2" fill="var(--c)" opacity="0.35"/>
+          <text class="trk" x="12" y="400" fill="var(--b)">C · Reuse our BWA</text>
+          <text class="lab" x="12" y="426">BWA options + methylseq</text>
+          <rect x="336" y="414" width="170" height="16" rx="2" fill="var(--b)"/>
+          <rect x="506" y="414" width="34" height="16" rx="2" fill="var(--b)" opacity="0.35"/>
+          <text class="lab" x="12" y="452">ATAC-seq, then ChIP-seq</text>
+          <rect x="540" y="440" width="153" height="16" rx="2" fill="var(--b)"/>
+          <rect x="693" y="440" width="102" height="16" rx="2" fill="var(--b)" opacity="0.7"/>
+          <text class="note" x="200" y="476">Later: long reads (minimap2, DeepVariant), VQSR, CNNScoreVariants</text>
+        </svg>
+      </div>
+      <div class="legend">
+        <span><i class="sw" style="background: var(--a)"></i>Track A: finish sarek</span>
+        <span><i class="sw" style="background: var(--c)"></i>Track B: expression</span>
+        <span><i class="sw" style="background: var(--b)"></i>Track C: reuse our BWA-MEM</span>
+        <span><i class="sw" style="background: var(--muted); opacity: .4"></i>up to the high estimate</span>
+      </div>
+      <figcaption>About five months for three tracks, if the pace holds and workers keep the Spark busy. Track A (sarek depth) is roughly 17–23 weeks of effort and is first in line for the Spark; the expression track is second. The exact STAR starts only if the decision runs show the reference repeats itself.</figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="runs-h">
+    <h2 id="runs-h">Decision runs: test the reference before writing code</h2>
+    <p class="intro">Germline taught this lesson first: run the reference twice before defining a gate. Each run below settles a verdict for the price of compute and a few hours of reading diffs.</p>
+    <div class="table">
+      <table>
+        <thead><tr><th>Run</th><th>Question it answers</th><th>Where</th><th>If yes</th><th>If no</th></tr></thead>
+        <tbody>
+          <tr><td>nf-core/rnaseq 3.27.0, twice, tier1-sized sample; Salmon fed both runs' STAR BAMs</td><td>Is Salmon 2.7's <code>quant.sf</code> byte-identical despite STAR's thread-dependent record order?</td><td>Spark</td><td colspan="2"><span class="pill go">Done: yes</span> <code>quant.sf</code>, featureCounts, <code>SJ.out.tab</code>, bigWig identical across runs. StringTie 3.0.3 is not deterministic (last-digit TPMs); STAR and markdup BAMs differ as expected.</td></tr>
+          <tr><td>nf-core/scrnaseq 4.2.0, STARsolo, twice, PBMC 1k</td><td>Do the count matrices match run to run?</td><td>Spark</td><td colspan="2"><span class="pill go">Done: yes</span> raw and filtered matrices, barcodes, features and summaries identical (12 threads). STAR 2.7.10b has no arm64 package, so it was built from the tagged source.</td></tr>
+          <tr><td>sarek 3.10.0 Mutect2 on SEQC2 HCC1395 WES, twice, plus one x86 run</td><td>Is Mutect2 deterministic under sarek's defaults, as the source suggests?</td><td>Spark + x86</td><td>Goldens for track A's somatic work</td><td>Map the residual before porting</td></tr>
+          <tr><td>methylseq 4.2.0 <code>--aligner bwameth</code> on SRR7961103, twice, cpus pinned</td><td>Goldens for the first methylseq gate</td><td>Spark</td><td>Track C starts on real goldens</td><td>Record the thread count and pin it</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="port-h">
+    <h2 id="port-h">The portfolio</h2>
+    <div class="table">
+      <table>
+        <thead><tr><th>Candidate</th><th>Verdict</th><th>Effort (wk)</th><th>What carries over</th><th>Exactness outlook</th><th>First gate</th></tr></thead>
+        <tbody>
+          <tr><td><b>GVCF mode + joint genotyping</b><small>sarek <code>--joint_germline</code></small></td><td><span class="pill go">Go</span></td><td class="num">4–6</td><td>All of HaplotypeCaller</td><td>Feasible. GenomicsDB's merge rules are undocumented, so an instrumented oracle is needed, as for bwa. GVCF mode changes the random-draw order, which must be re-proven.</td><td>HG002 <code>g.vcf.gz</code> identical to sarek's</td></tr>
+          <tr><td><b>Mutect2 somatic chain</b><small>tumor/normal, then tumor-only</small></td><td><span class="pill go">Go</span></td><td class="num">8.5–11</td><td>60–65% of our HaplotypeCaller: assembly, PairHMM, realignment, Java math</td><td>Deterministic by source reading (seeded downsampling we already reproduce); new assembly numerics are the risk</td><td>Raw Mutect2 VCF + stats on HCC1395 WES, about week 4–5</td></tr>
+          <tr><td><b>methylseq (bwa-meth)</b><small>EM-seq and WGBS</small></td><td><span class="pill go">Go</span></td><td class="num">5–6</td><td>Our BWA-MEM (alignment is ~90% of CPU-hours), Picard markdup</td><td>MethylDackel and Picard deterministic; BWA must take runtime scoring and <code>-M</code>/<code>-C</code>, and sarek is re-gated after</td><td>bwa-meth BAM records on SRR7961103</td></tr>
+          <tr><td><b>TIDDIT structural variants</b><small>in both sarek and raredisease</small></td><td><span class="pill go">Go</span></td><td class="num">3–5</td><td>Exact bwa for contig realignment, BAM IO</td><td>Mostly integer logic; ~5 h on a 30× genome today</td><td>TIDDIT VCF on the chr20 slice</td></tr>
+          <tr><td><b>Long reads: minimap2 + DeepVariant</b><small>PacBio HiFi first, ONT later</small></td><td><span class="pill later">Later</span></td><td class="num">9–12</td><td>IO, kernel patterns, gate harness; the aligner itself is new</td><td>Aligner and input tensors exact; the network needs a tiered, non-exact gate. References are x86-only</td><td>HG002 chr20 BAM identical to minimap2 2.31</td></tr>
+          <tr><td><b>Bulk RNA-seq</b><small>nf-core/rnaseq, STAR + Salmon</small></td><td><span class="pill go">Go: next</span></td><td class="num">13.5–18</td><td>IO, markdup (after a Picard 3.5 diff), huge-page memory; STAR is new</td><td>Measured: Salmon, featureCounts and junctions repeat exactly; STAR BAM needs a normalized or single-thread gate; StringTie needs <code>-p 1</code></td><td>Post-alignment core on golden STAR BAMs</td></tr>
+          <tr><td><b>Single-cell</b><small>nf-core/scrnaseq, STARsolo</small></td><td><span class="pill go">Go: next</span></td><td class="num">10–14</td><td>Shares the exact STAR core with RNA-seq</td><td>Measured: matrices repeat exactly; BAMs do not</td><td>Count matrices identical on PBMC 1k</td></tr>
+          <tr><td><b>ATAC-seq, then ChIP-seq</b></td><td><span class="pill later">Next</span></td><td class="num">4.5 + 3</td><td>BWA (with <code>-M</code>), Picard</td><td>MACS2/3 tractable; Trim Galore is new</td><td>ATAC BAM on HG002 data</td></tr>
+          <tr><td><b>VQSR</b></td><td><span class="pill later">Later</span></td><td class="num">1.5–2</td><td>Joint genotyping output</td><td>Seeded, deterministic, bit-exact feasible; needs a cohort dataset</td><td><code>.recal</code> + <code>.tranches</code> on a trio</td></tr>
+          <tr><td><b>CNNScoreVariants</b><small>sarek's default single-sample filter</small></td><td><span class="pill later">Later</span></td><td class="num">2–3</td><td>HaplotypeCaller VCF</td><td>float32 TensorFlow: documented residual only; upstream already replaced it</td><td>FILTER column identical except tranche ties</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="shared-h">
+    <h2 id="shared-h">Shared investments</h2>
+    <p class="intro">These make several pipelines cheaper at once, so they are scheduled where their first consumer needs them.</p>
+    <div class="cards">
+      <div class="card"><h3>Multi-sample runs</h3><p>Tumor/normal pairs, trios and cohorts in one <code>nomics run</code>, with forced spill when a sample is large.</p><span class="uses">serves: Mutect2, joint genotyping, VQSR</span></div>
+      <div class="card"><h3>BWA as a general aligner</h3><p>Runtime scoring, <code>-M</code> and <code>-C</code> through the NEON and GPU kernels, keeping the sarek constants path and re-gating it.</p><span class="uses">serves: methylseq, ATAC-seq, ChIP-seq</span></div>
+      <div class="card"><h3>An exact STAR</h3><p>A second BWA-sized project: two-pass junction re-indexing, the transcriptome projection, and the thread-order RNG. the predecessor project's exact GPU seed search transfers.</p><span class="uses">serves: RNA-seq, single-cell, rnavar</span></div>
+      <div class="card"><h3>New gate classes</h3><p>Contents-after-untar for tar.gz outputs, decompressed comparison for gzip with timestamps, and later, if long reads are taken up, a labelled tolerance gate for neural networks.</p><span class="uses">serves: Mutect2, single-cell</span></div>
+      <div class="card"><h3>Golden discipline</h3><p>Pin cpus on every golden: bwa without <code>-K</code> and Bismark size their work by thread count, so a Nextflow retry silently changes the reference.</p><span class="uses">serves: every new family</span></div>
+      <div class="card"><h3>The x86 lane</h3><p>Proven today at whole-genome scale (41/41). Several new references ship x86-only containers, so their goldens are made there.</p><span class="uses">serves: long reads, Strelka-class tools</span></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="no-h">
+    <h2 id="no-h">Ruled out, and why</h2>
+    <ul class="ruled">
+      <li><b>Cell Ranger, Space Ranger, Cell Ranger ATAC.</b> Source is published for use with 10x products only; reading it as a spec is legally fraught. They remain a sanity check, like GIAB.</li>
+      <li><b>Short-read DeepVariant.</b> Cannot be exact, and Parabricks already runs it on the GPU in minutes.</li>
+      <li><b>Manta and Strelka2.</b> Archived upstream; Strelka2 ships as an x86 CentOS 6 binary.</li>
+      <li><b>FreeBayes.</b> 415 uses of <code>long double</code>, which is 80-bit on x86 and 128-bit on Arm, so even the reference disagrees with itself across platforms.</li>
+      <li><b>ASCAT, CNVkit, Control-FREEC, MSIsensor, snpEff.</b> No port needed: run unmodified on our BAMs and VCFs, which already match sarek's, and their output matches too.</li>
+      <li><b>Bismark (default methylseq) and CUT&amp;RUN.</b> Both need an exact Bowtie2 first (4–6 weeks). Revisit if Bismark's Rust rewrite becomes the nf-core pin.</li>
+      <li><b>nf-core/rnafusion and raredisease as a whole.</b> Small user base for the first; the second needs bwa-mem2 and DeepVariant before it adds anything we can make exact.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="src-h">
+    <h2 id="src-h">Sources</h2>
+    <div class="sources">
+      <p>Six briefs, each with cited sources (tool source at pinned tags, release notes, benchmarks, nf-core configs), every claim tagged measured, source, claimed or estimate:</p>
+      <p><code>docs/research/pipelines/rnaseq.md</code></p>
+      <p>Spot-checked: Salmon 2.6.0's release notes do state <code>quant.sf</code> is byte-identical across runs and thread counts. One correction flowed back: VQSR is seeded and not deprecated in GATK (<code>docs/research/roadmap.md</code>).</p>
+    </div>
+  </section>
+</main>

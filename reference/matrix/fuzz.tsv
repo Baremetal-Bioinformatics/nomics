@@ -1,0 +1,18 @@
+# Fuzzed edge-case goldens (docs/strategy/fuzz-goldens.md). Read by scripts/goldens/exome_golden.sh.
+# id	scenario	seed	background_pairs
+# Reads come from scripts/fuzz/make_fuzz.py over the Spark's GATK GRCh38 FASTA and Agilent v7 targets;
+# the same row always gives the same bytes. 30,000 background pairs keep all 12 fastp chunks non-empty.
+F01	homopolymer	1	30000
+F02	long_indel	1	30000
+F03	short_insert	1	30000
+F04	n_bases	1	30000
+F05	duplicates	1	30000
+F06	chimera	1	30000
+F07	unmapped	1	30000
+F08	contig_edges	1	30000
+F09	quality	1	30000
+F10	read_length	1	30000
+F11	pileup	1	30000
+F12	complex_var	1	30000
+F13	overlap	1	30000
+F14	coord_wrap	1	30000

@@ -1,0 +1,2 @@
+patient,sex,status,sample,lane,fastq_1,fastq_2
+HG002,XY,0,HG002_WGS30S,L1,${HOME}/omics/data/wgs30_slice/wgs30s_1.fastq.gz,${HOME}/omics/data/wgs30_slice/wgs30s_2.fastq.gz

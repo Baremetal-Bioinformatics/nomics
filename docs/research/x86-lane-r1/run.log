@@ -1,0 +1,56 @@
+index: 21.7 GB, 21.7 GB on 2 MiB pages
+align setup: index loaded in 114.1s alongside prep; waited 0.0s after prep
+prep L1 (spilled to /data/omics/runs/nomics-wgs30-x86-r1/spill): Stats { pairs_in: 355791257, pairs_out: 350264978, passed_reads: 700529956, low_quality_reads: 10845842, too_many_n_reads: 206716, too_short_reads: 0 }
+align chunk 0001: 29187718 pairs, 58621557 records
+align chunk 0002: 29189180 pairs, 58623792 records
+align chunk 0003: 29189960 pairs, 58624594 records
+align chunk 0004: 29189111 pairs, 58622725 records
+align chunk 0005: 29187268 pairs, 58619359 records
+align chunk 0006: 29188100 pairs, 58622004 records
+align chunk 0007: 29189453 pairs, 58623788 records
+align chunk 0008: 29189212 pairs, 58623741 records
+align chunk 0009: 29189319 pairs, 58623169 records
+align chunk 0010: 29188010 pairs, 58621213 records
+align chunk 0011: 29190034 pairs, 58625048 records
+align chunk 0012: 29187613 pairs, 58619863 records
+prep overlapped with alignment (802.7s)
+index after alignment: 21.7 GB, 21.7 GB on 2 MiB pages
+align tail: mapped BAM writer drained 15.5s after alignment
+markdup stage stream pass1 (703470853 records, 699994710 fragment ends, 349873606 pairs): 331.6s (consumer busy 331.1s)
+markdup stage stream select: 21.2s
+markdup stage stream pass2 + write (20 threads): 236.0s
+markdup: DuplicationMetrics { library: "HG002_WGS30", unpaired_reads_examined: 247498, read_pairs_examined: 349873606, secondary_or_supplementary_rds: 2940897, unmapped_reads: 535246, unpaired_read_duplicates: 68252, read_pair_duplicates: 32449512, read_pair_optical_duplicates: 0, percent_duplication: 0.09281109567242302, estimated_library_size: Some(1767662229) }
+scatter: 21 interval groups, merge seed 1791676187
+bqsr stage known sites: 49.2s
+bqsr stage reference: 2.3s
+bqsr stage recalibrator pass: 298.4s
+bqsr stage report: 0.0s
+bqsr stage apply pass: 347.3s
+haplotypecaller chr1_10001-207666.bed: 598178 regions, 192662 records
+haplotypecaller chr2_16146120-32867130.bed: 1073591 regions, 334554 records
+haplotypecaller chr1_122026460-124977944.bed: 619534 regions, 217059 records
+haplotypecaller chr2_238904048-242183529.bed: 992014 regions, 327329 records
+haplotypecaller chr4_10001-1429358.bed: 952785 regions, 335092 records
+haplotypecaller chr4_190173122-190204555.bed: 674896 regions, 223888 records
+haplotypecaller chr5_139453660-155760324.bed: 670254 regions, 219231 records
+haplotypecaller chr6_95070791-167591393.bed: 664889 regions, 225508 records
+haplotypecaller chr7_58169654-60828234.bed: 717254 regions, 247041 records
+haplotypecaller chr8_44033745-45877265.bed: 700498 regions, 230893 records
+haplotypecaller chr9_41229379-41237752.bed: 604217 regions, 214788 records
+haplotypecaller chr11_51078349-54425074.bed: 602884 regions, 202486 records
+haplotypecaller chr10_39590436-39593013.bed: 730374 regions, 260826 records
+haplotypecaller chr13_86252980-111703855.bed: 596762 regions, 202987 records
+haplotypecaller chr12_37235253-37240944.bed: 832369 regions, 288154 records
+haplotypecaller chr17_60001-448188.bed: 624640 regions, 199141 records
+haplotypecaller chr15_20729747-21193490.bed: 802416 regions, 270669 records
+haplotypecaller chr18_47019913-54536574.bed: 633160 regions, 246335 records
+haplotypecaller chr20_36314720-64334167.bed: 675031 regions, 238462 records
+haplotypecaller chrX_37285838-49348394.bed: 513252 regions, 83205 records
+haplotypecaller chrY_9055175-9057608.bed: 65059 regions, 13487 records
+stage	wall_s	peak_rss_gb
+prep	802.705	64.090
+align	13587.011	64.090
+markdup	589.182	64.090
+bqsr	697.349	64.090
+haplotypecaller	2199.547	88.472
+TOTAL	17187.189	88.472

@@ -1,0 +1,5 @@
+# Target BEDs for the matrix exomes. url "-" means the file already on the Spark is used as is.
+# name	file	url	md5
+agilent_v7	Agilent_v7.bed	-	4a75e65895b6d0fca5bafd3da40ebd6e
+idt	idt_capture.grch38.bed	https://storage.googleapis.com/brain-genomics-public/research/sequencing/grch38/bed/idt_capture.grch38.bed	fd44b2ee8dca744dd734a42045da3baf
+agilent_v6utr	S07604624_Padded_Agilent_SureSelectXT_allexons_V6_UTR.bed	https://ngi-igenomes.s3.amazonaws.com/test-data/sarek/S07604624_Padded_Agilent_SureSelectXT_allexons_V6_UTR.bed	95b4bb08ca92865312bfbe95eebb768d
